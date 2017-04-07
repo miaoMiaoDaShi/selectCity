@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">忆筏</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="addNotes">新建</string>
+    <string-array name="tabs_title">
+        <item>文章一</item>
+        <item>文章二</item>
+        <item>文章三</item>
+        <item>文章四</item>
+        <item>文章五</item>
+        <item>文章六</item>
+    </string-array>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@mipmap/ic_home"
+            android:title="首页" />
+        <item
+            android:id="@+id/nav_diy"
+            android:icon="@mipmap/ic_diy"
+            android:title="个性化" />
+        <item
+            android:id="@+id/nav_meiwen"
+            android:icon="@mipmap/ic_meiwen"
+            android:title="美文推荐" />
+        <item
+            android:id="@+id/nav_notice"
+            android:icon="@mipmap/ic_notice"
+            android:title="通知" />
+        <item
+            android:id="@+id/nav_mood"
+            android:icon="@mipmap/ic_mood"
+            android:title="心情" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@mipmap/ic_about"
+            android:title="关于" />
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@mipmap/ic_share"
+            android:title="分享" />
+    </group>
+
+</menu>

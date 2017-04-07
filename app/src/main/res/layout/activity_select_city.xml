@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    tools:context="com.xxp.jiyi.pro.activity.SelectCityActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@mipmap/ic_close"/>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="选择您的城市"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+
+    <EditText
+        android:id="@+id/txt_city"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="10dp"
+        android:maxEms="10"
+        android:textSize="19sp"
+        android:textColor="@color/black"
+        android:background="@drawable/bg_edit"
+        android:hint="搜索城市(中文/拼音)"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <TextView
+           android:id="@+id/tv_isEmpty"
+           android:layout_marginTop="50dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:visibility="invisible"
+           android:layout_centerHorizontal="true"
+           android:text="阿欧!没有找到相关城市"
+           android:textSize="25sp"
+           android:textColor="@color/gray"/>
+       <android.support.v7.widget.RecyclerView
+           android:id="@+id/rv_city"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent" />
+   </RelativeLayout>
+</LinearLayout>
