@@ -32,4 +32,12 @@ public class CityData {
     public void setPinyin(String pinyin) {
         this.pinyin = pinyin;
     }
+
+    @Override
+    public String toString() {
+        return "CityData{" +
+                "name='" + name + '\'' +
+                ", pinyin='" + pinyin + '\'' +
+                '}';
+    }
 }

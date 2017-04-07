@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,6 +35,7 @@ import butterknife.OnClick;
 public class SelectCityActivity extends BaseActivity implements TextWatcher {
 
 
+    private final String TAG = "SelectCityActivity";
     @BindView(R.id.iv_close)
     ImageView ivClose;
     @BindView(R.id.txt_city)
@@ -121,6 +123,8 @@ public class SelectCityActivity extends BaseActivity implements TextWatcher {
 
                 rvCity.setLayoutManager(new GridLayoutManager(this, 3));
                 rvCity.setAdapter(adapterOne);
+
+                click(adapterOne,type);
                 break;
             case 1:
                 AlmightyAdapter<CityData> adapterTwo = new AlmightyAdapter<CityData>(citysTwo, this) {
@@ -138,8 +142,28 @@ public class SelectCityActivity extends BaseActivity implements TextWatcher {
 
                 rvCity.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
                 rvCity.setAdapter(adapterTwo);
+                click(adapterTwo,type);
                 break;
         }
+    }
+
+    //点击item
+    private void click(AlmightyAdapter<CityData> adapter, final int type) {
+        adapter.setOnItemOnClickListener(new AlmightyAdapter.OnItemOnClickListener() {
+            @Override
+            public void onClick(int position) {
+                switch (type) {
+                    case 0:
+                        CityData cityOne = citysOne.get(position);
+                        Log.e(TAG, "onClick: "+cityOne.toString());
+                        break;
+                    case 1:
+                        CityData cityTwo =  citysTwo.get(position);
+                        Log.e(TAG, "onClick: "+cityTwo.toString());
+                        break;
+                }
+            }
+        });
     }
 
     private void fromGPS() {
