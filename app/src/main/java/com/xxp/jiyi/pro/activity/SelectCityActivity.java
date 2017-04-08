@@ -156,10 +156,14 @@ public class SelectCityActivity extends BaseActivity implements TextWatcher {
                     case 0:
                         CityData cityOne = citysOne.get(position);
                         Log.e(TAG, "onClick: "+cityOne.toString());
+                        setResult(MainActivity.CODE_RESULT,getIntent().putExtra(MainActivity.KEY_CITY_INFO,cityOne.getName()));
+                        finish();
                         break;
                     case 1:
                         CityData cityTwo =  citysTwo.get(position);
                         Log.e(TAG, "onClick: "+cityTwo.toString());
+                        setResult(MainActivity.CODE_RESULT,getIntent().putExtra(MainActivity.KEY_CITY_INFO,cityTwo.getName()));
+                        finish();
                         break;
                 }
             }

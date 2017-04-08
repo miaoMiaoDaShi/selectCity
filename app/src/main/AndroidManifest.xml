@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".pro.activity.SelectCityActivity"
+            android:name=".pro.activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".pro.activity.SplashActivity" />
-        <activity android:name=".pro.activity.MainActivity" />
+        <activity android:name=".pro.activity.SelectCityActivity" />
         <activity android:name=".pro.activity.AddNotesActivity"></activity>
     </application>
 

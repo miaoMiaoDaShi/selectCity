@@ -1,5 +1,6 @@
 package com.xxp.jiyi.pro.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -58,6 +60,17 @@ public class MainActivity extends BaseActivity
     //headView
     private View mHeaderLayout;
 
+    //请求码
+    public static final int CODE_REQUEST = 0x11;
+
+    //返回码
+    public static final int CODE_RESULT = 0x12;
+
+    //城市信息key
+    public static final String KEY_CITY_INFO = "key_city_info";
+
+    //切换城市
+    private ImageView ivChangeCity;
     //天气一行
     private TextView tvOne;
     //天气二行
@@ -81,6 +94,8 @@ public class MainActivity extends BaseActivity
     private Fragment mCurrentFragment;
 
     private String mTitles[] = {"忆筏", "个性化", "美文推荐", "通知", "心情", "关于"};
+    //默认的城市
+    private final String DEFAULT_CITY = "成都";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +103,7 @@ public class MainActivity extends BaseActivity
         initNavigationView();
         initContentView();
         //获取天气
-        loadWeather();
+        loadWeather(DEFAULT_CITY);
         //农历
         loadLunar();
     }
@@ -102,8 +117,8 @@ public class MainActivity extends BaseActivity
         tvTwo.setText(String.format("%d月%d日  星期%s  %s", month, day, lunar.getChineseWeek(weekday), lunar.getLunarMonthString()));
     }
 
-    private void loadWeather() {
-        Observable<WeatherData> observable = APIEngine.getInstance().getWeatherService().getWeather("郫县");
+    private void loadWeather(String city) {
+        Observable<WeatherData> observable = APIEngine.getInstance().getWeatherService().getWeather(city);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<WeatherData>() {
@@ -121,6 +136,7 @@ public class MainActivity extends BaseActivity
                                 .getShowapi_res_body()
                                 .getDayList()
                                 .get(0).getDay_air_temperature() + "℃");
+
                         tvOne.setText(value
                                 .getShowapi_res_body()
                                 .getArea() + " "
@@ -142,10 +158,11 @@ public class MainActivity extends BaseActivity
 
                     @Override
                     public void onError(Throwable e) {
-
+                        Log.e(TAG, "onError: "+e );
                     }
 
                 });
+
     }
 
     private void initContentView() {
@@ -236,8 +253,23 @@ public class MainActivity extends BaseActivity
     private void initNavigationView() {
         navView.setNavigationItemSelectedListener(this);
         mHeaderLayout = navView.getHeaderView(0);
+        ivChangeCity = (ImageView) mHeaderLayout.findViewById(R.id.iv_change);
         tvOne = (TextView) mHeaderLayout.findViewById(R.id.tv_one);
         tvTwo = (TextView) mHeaderLayout.findViewById(R.id.tv_two);
+
+        ivChangeCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //点击到选择城市
+                toChangeCity();
+            }
+        });
+    }
+
+    //到选择城市的Activity
+    private void toChangeCity() {
+        Intent intent = new Intent(this,SelectCityActivity.class);
+        startActivityForResult(intent,CODE_REQUEST);
     }
 
     @Override
@@ -271,8 +303,6 @@ public class MainActivity extends BaseActivity
             case R.id.nav_share:
                 break;
         }
-
-
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -293,6 +323,23 @@ public class MainActivity extends BaseActivity
 
     //添加笔记
     private void addNotes() {
-
+// TODO: 2017/4/8  新建记录
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (resultCode) {
+            case CODE_RESULT:
+                Log.e(TAG, "onActivityResult: " );
+                String city = data.getStringExtra(KEY_CITY_INFO);
+                if(!TextUtils.isEmpty(city)){
+                    loadWeather(city);
+                }
+                break;
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
 }
