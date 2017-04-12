@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        Miao {
-            keyAlias 'xiaopengbuxiao'
-            keyPassword 'ZWP1996'
-            storeFile file('E:/key.story')
-            storePassword 'ZWP1996'
-        }
-    }
+//    signingConfigs {
+//        Miao {
+//            keyAlias 'xiaopengbuxiao'
+//            keyPassword 'ZWP1996'
+//            storeFile file('E:/key.story')
+//            storePassword 'ZWP1996'
+//        }
+//    }
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
     compileSdkVersion 25

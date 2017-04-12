@@ -65,10 +65,9 @@ public class SelectCityActivity extends BaseActivity implements TextWatcher {
         return R.layout.activity_select_city;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
+    @Override
+    protected void init() {
         initDate();
         initListener();
     }

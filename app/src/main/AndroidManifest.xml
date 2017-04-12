@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xxp.jiyi">
-<uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".pro.App"
         android:allowBackup="true"
@@ -11,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".pro.activity.MainActivity"
+            android:name=".pro.activity.SplashActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pro.activity.SplashActivity" />
-        <activity android:name=".pro.activity.SelectCityActivity" />
-        <activity android:name=".pro.activity.AddNotesActivity"></activity>
+        <activity
+            android:name=".pro.activity.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pro.activity.SelectCityActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pro.activity.AddNotesActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

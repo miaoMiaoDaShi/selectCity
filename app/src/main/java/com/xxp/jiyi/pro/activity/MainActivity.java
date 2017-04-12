@@ -97,9 +97,9 @@ public class MainActivity extends BaseActivity
     //默认的城市
     private final String DEFAULT_CITY = "成都";
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void init() {
         initNavigationView();
         initContentView();
         //获取天气

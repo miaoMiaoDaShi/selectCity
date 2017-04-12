@@ -5,11 +5,16 @@ import android.os.Bundle;
 
 import com.xxp.jiyi.R;
 
-public class AddNotesActivity extends AppCompatActivity {
+public class AddNotesActivity extends BaseActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_notes);
+    protected void init() {
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_add_notes;
     }
 }
