@@ -1,7 +1,6 @@
 package com.xxp.jiyi.pro.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -26,6 +25,7 @@ import com.xxp.jiyi.pro.fragment.MeiwenFragment;
 import com.xxp.jiyi.pro.fragment.MoodFragment;
 import com.xxp.jiyi.pro.fragment.NoticeFragment;
 import com.xxp.jiyi.pro.utils.Lunar;
+import com.xxp.jiyi.pro.utils.SharePreferenceHelper;
 
 import java.util.Calendar;
 
@@ -103,7 +103,7 @@ public class MainActivity extends BaseActivity
         initNavigationView();
         initContentView();
         //获取天气
-        loadWeather(DEFAULT_CITY);
+        loadWeather(SharePreferenceHelper.getInstance(this).getString(KEY_CITY_INFO,DEFAULT_CITY));
         //农历
         loadLunar();
     }
@@ -334,6 +334,7 @@ public class MainActivity extends BaseActivity
                 Log.e(TAG, "onActivityResult: " );
                 String city = data.getStringExtra(KEY_CITY_INFO);
                 if(!TextUtils.isEmpty(city)){
+                    SharePreferenceHelper.getInstance(this).putString(KEY_CITY_INFO,city);
                     loadWeather(city);
                 }
                 break;
